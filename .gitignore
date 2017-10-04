@@ -4,8 +4,8 @@ __pycache__/
 *$py.class
 
 #project
-.idea
-[o-9]*.py
+.idea/*
+[0-9]*.py
 db.sqlite3
 
 # C extensions

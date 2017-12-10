@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^entrar/$', login, {'template_name': 'login.html'}, name='login'),
     url(r'^sair/$', logout, {'next_page': 'index'}, name='logout'),
     path('conta/', include('accounts.urls', namespace='accounts')),
+    path('jogos/', include('game.urls', namespace='game')),
     url(r'^admin/', admin.site.urls),
 ]
 

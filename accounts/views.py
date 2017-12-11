@@ -14,11 +14,6 @@ from .models import User
 from game.models import Game
 from .forms import UserAdminCreationForm
 
-
-class IndexView(LoginRequiredMixin, TemplateView):
-    template_name = 'accounts/index.html'
-
-
 def register(request):
     form = UserAdminCreationForm()
     if request.method == 'POST':
@@ -62,12 +57,13 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
         form.save()
         return super(UpdatePasswordView, self).form_valid(form)
 
-index = IndexView.as_view()
+
 update_user = UpdateUserView.as_view()
 update_password = UpdatePasswordView.as_view()
 
-def conta(request):
+
+def index(request):
     user = User.objects.get(username=request.user)
     games = Game.objects.filter(user=user)
-    context = {'games':games}
+    context = {'games': games}
     return render(request, 'accounts/conta.html', context)

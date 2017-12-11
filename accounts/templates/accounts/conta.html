@@ -17,7 +17,7 @@
         Autores: {{ i.autores }}<br>
         Versão: {{ i.versao }}<br>
         Descrição: {{  i.descricao }}<br>
-        <button>Remover</button>
+        <a href="{% url 'game:remove' i.id %}"><button>Remover</button></a>
         <br><br>
     {% endfor %}
 

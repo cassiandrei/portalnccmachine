@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from game.forms import *
 from django.contrib import messages
-
+from django.shortcuts import redirect
 from .models import Game
 # Create your views here.
 
@@ -25,3 +25,8 @@ def lista_jogos(request):
     games = Game.objects.all()
     context = {'games': games}
     return render(request, 'game/lista_jogos.html', context)
+
+def remove(request, id):
+    Game.objects.get(id=id).delete()
+    messages.success(request, 'Jogo Removido')
+    return redirect('accounts:index')

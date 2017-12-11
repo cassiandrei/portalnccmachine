@@ -2,8 +2,25 @@
 
 {% block title %}Adicionar Game{% endblock %}
 {% block container %}
-    <form action="{% url 'game:add' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
-        {{ form.as_p }}
+    <form action="{% url 'game:add' %}" method="post" enctype="application/zip">{% csrf_token %}
+        <fieldset>
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+            {% endfor %}
+            {% for field in form %}
+                {{ field.help_text|safe }}
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                    <div>
+                        {{ field }}
+                        {% for error in field.errors %}
+                            <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </fieldset>
         <button>Adicionar</button>
     </form>
 {% endblock %}

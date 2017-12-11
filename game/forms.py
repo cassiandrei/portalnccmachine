@@ -15,7 +15,7 @@ class GameForm(forms.ModelForm):
         if not valid:
             return valid
 
-        file_object = self.arquivo
+        file_object = self.cleaned_data.get('arquivo')
         if file_object.size > 314572800:
             self.errors['arquivo'] = 'Tamanho da foto excedido'
             return False

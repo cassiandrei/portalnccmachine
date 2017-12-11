@@ -1,7 +1,9 @@
-{% extends 'base.html' %}
-{% block title %}Meus Jogos{% endblock %}
+{% extends "base.html" %}
+
+{% block title %}Adicionar Game{% endblock %}
 {% block container %}
     <form action="{% url 'game:add' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
         {{ form.as_p }}
+        <button>Adicionar</button>
     </form>
 {% endblock %}

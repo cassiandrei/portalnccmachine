@@ -10,9 +10,15 @@
 <div class="row">
     <div class="col-md-4">
         <div class="list-group">
-          <a href="{% url 'accounts:index' %}" class="list-group-item active">Minha Conta</a>
+          <a href="{% url 'intro' %}" class="list-group-item">Introdução</a>
+          <a href="{% url 'accounts:index' %}" class="list-group-item">Minha Conta</a>
+          <a href="{% url 'game:add' %}" class="list-group-item">Adicionar Jogo</a>
+          <a href="{% url 'game:lista_jogos' %}" class="list-group-item">Lista de Jogos</a>
+          <a href="{% url 'accounts:meus_jogos' %}" class="list-group-item">Meus Jogos</a>
+          <a href="{% url 'tutorial' %}" class="list-group-item">Tutorial</a>
           <a href="{% url 'accounts:update_user' %}" class="list-group-item">Alterar Dados</a>
           <a href="{% url 'accounts:update_password' %}" class="list-group-item">Alterar Senha</a>
+          <a href="{% url 'sobre' %}" class="list-group-item">Sobre a NCCGameMachine</a>
         </div>
     </div>
     <div class="col-md-8">

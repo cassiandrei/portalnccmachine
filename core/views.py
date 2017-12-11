@@ -32,3 +32,12 @@ def contact(request):
         'success': success
     }
     return render(request, 'contact.html', context)
+
+def intro(request):
+    return render(request, 'intro.html')
+
+def tutorial(request):
+    return render(request, 'tutorial.html')
+
+def sobre(request):
+    return render(request, 'sobre.html')

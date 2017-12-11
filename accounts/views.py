@@ -64,3 +64,6 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
 index = IndexView.as_view()
 update_user = UpdateUserView.as_view()
 update_password = UpdatePasswordView.as_view()
+
+def meus_jogos(request):
+    return render(request, 'accounts/meus_jogos.html')

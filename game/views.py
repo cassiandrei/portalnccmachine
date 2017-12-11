@@ -16,3 +16,6 @@ def gameregister(request):
         else:
             messages.error(request, 'Dados invalidos')
     return render(request, 'game/add.html', {'form': form})
+
+def lista_jogos(request):
+    return render(request, 'game/lista_jogos.html')

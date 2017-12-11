@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from game.forms import *
 from django.contrib import messages
+
+from .models import Game
 # Create your views here.
 
 def index(request):
@@ -20,4 +22,6 @@ def gameregister(request):
     return render(request, 'game/add.html', {'form': form})
 
 def lista_jogos(request):
-    return render(request, 'game/lista_jogos.html')
+    games = Game.objects.all()
+    context = {'games': games}
+    return render(request, 'game/lista_jogos.html', context)

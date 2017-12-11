@@ -8,5 +8,11 @@
     <h2>Lista de jogos</h2>
 
     Jogos disponiveis:<br><br>
-    info aqui
+    {%  for i in games %}
+        <b>{{ i.nome }}</b><br>
+        Autores: {{ i.autores }}<br>
+        Versão: {{ i.versao }}<br>
+        Descrição: {{  i.descricao }}<br>
+        <br><br>
+    {%  endfor %}
 {% endblock %}

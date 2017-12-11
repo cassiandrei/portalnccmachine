@@ -11,6 +11,7 @@ from django.contrib.auth.views import login as auth_login
 from django.contrib import messages
 
 from .models import User
+from game.models import Game
 from .forms import UserAdminCreationForm
 
 
@@ -65,5 +66,8 @@ index = IndexView.as_view()
 update_user = UpdateUserView.as_view()
 update_password = UpdatePasswordView.as_view()
 
-def meus_jogos(request):
-    return render(request, 'accounts/meus_jogos.html')
+def conta(request):
+    user = User.objects.get(username=request.user)
+    games = Game.objects.filter(user=user)
+    context = {'games':games}
+    return render(request, 'accounts/conta.html', context)

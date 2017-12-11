@@ -13,3 +13,6 @@ class Game(models.Model):
         return str(self.nome) + '.' + filename.split('.')[-1]
 
     arquivo = models.FileField(help_text='zip do jogo', upload_to=arquivoname)
+
+    def __str__(self):
+        return self.nome

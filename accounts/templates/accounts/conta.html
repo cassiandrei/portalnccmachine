@@ -1,0 +1,24 @@
+{% extends "accounts/index.html" %}
+
+{% load widget_tweaks %}
+
+{% block title %}Minha Conta{% endblock %}
+
+{% block accounts_container %}
+    <h2>Minha Conta</h2>
+
+    Info:<br><br>
+    Nome: {{ user.name }}<br>
+    Email: {{ user.email }}<br>
+    Data da entrada: {{ user.date_joined }}<br>
+    <h2>Meus Jogos:</h2>
+    {% for i in games %}
+    <b>{{ i.nome }}</b><br>
+        Autores: {{ i.autores }}<br>
+        Versão: {{ i.versao }}<br>
+        Descrição: {{  i.descricao }}<br>
+        <button>Remover</button>
+        <br><br>
+    {% endfor %}
+
+{% endblock %}

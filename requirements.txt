@@ -1,0 +1,5 @@
+Django==2.0
+django-widget-tweaks==1.4.1
+django-cleanup
+pyotp
+easy-thumbnails

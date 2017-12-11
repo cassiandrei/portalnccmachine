@@ -8,7 +8,7 @@ class GameForm(forms.ModelForm):
         model = Game
         exclude = ['user']
 
-    def clean_recipients(self):
+    def clean_arquivo(self):
         file = self.cleaned_data['arquivo']
         if file.size > 314572800:
             raise forms.ValidationError("Tamanho da foto excedido")

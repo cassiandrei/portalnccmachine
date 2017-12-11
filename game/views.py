@@ -1,6 +1,9 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from game.forms import *
 from django.contrib import messages
+import json
+
 from django.shortcuts import redirect
 from .models import Game
 # Create your views here.
@@ -30,3 +33,16 @@ def remove(request, id):
     Game.objects.get(id=id).delete()
     messages.success(request, 'Jogo Removido')
     return redirect('accounts:index')
+
+#retorna um json com todos os jogos
+def getAllGames(request):
+    games = Game.objects.all()
+    dic = {}
+    for i in games:
+        dic[i.nome] = {}
+        dic[i.nome]["jogo"] = i.nome
+        dic[i.nome]["autores"] = i.autores
+        dic[i.nome]["versao"] = i.versao
+        dic[i.nome]["descricao"] = i.descricao
+        dic[i.nome]["link"] = request.build_absolute_uri(i.arquivo.url)
+    return HttpResponse(json.dumps(dic, sort_keys=True, indent=4, separators=(',', ': ')))

@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^adicionar$', views.gameregister, name='add'),
     url(r'^lista/$', views.lista_jogos, name='lista_jogos'),
     path('remove/<int:id>/', views.remove, name='remove'),
+    url(r'^json/$', views.getAllGames, name='json'),
 ]

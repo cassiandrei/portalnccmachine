@@ -11,7 +11,9 @@ def gameregister(request):
     if request.method == 'POST':
         form = GameForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            game = form.save(commit=False)
+            game.user = request.user
+            game.save()
             messages.success(request, 'Jogo cadastrado com sucesso')
         else:
             messages.error(request, 'Dados invalidos')

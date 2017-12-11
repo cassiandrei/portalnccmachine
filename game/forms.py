@@ -12,8 +12,13 @@ class GameForm(forms.ModelForm):
 
     def is_valid(self):
         valid = super(GameForm, self).is_valid()
-        file_object = self.cleaned_data.get('arquivo')
+        if not valid:
+            return valid
+
+        file_object = self.arquivo
         if file_object.size > 314572800:
             self.errors['arquivo'] = 'Tamanho da foto excedido'
+            return False
         if file_object.name.split('.')[1] != 'zip':
             self.errors['arquivo'] = 'Use formato ZIP para enviar o jogo'
+            return False

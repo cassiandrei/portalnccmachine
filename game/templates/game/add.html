@@ -1,7 +1,6 @@
-{% extends "base.html" %}
-
-{% block title %}Adicionar Game{% endblock %}
-{% block container %}
+{% extends "accounts/index.html" %}
+{% block title %}Enviar Game{% endblock %}
+{% block accounts_container %}
     <form action="{% url 'game:add' %}" method="post" enctype="application/zip">{% csrf_token %}
         <fieldset>
             {% for error in form.non_field_errors %}

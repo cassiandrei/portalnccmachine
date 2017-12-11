@@ -1,7 +1,7 @@
 {% extends "accounts/index.html" %}
 {% block title %}Enviar Game{% endblock %}
 {% block accounts_container %}
-    <form action="{% url 'game:add' %}" method="post" enctype="application/zip">{% csrf_token %}
+    <form action="{% url 'game:add' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
         <fieldset>
             {% for error in form.non_field_errors %}
                 <div class="alert alert-danger">

@@ -17,6 +17,7 @@ def gameregister(request):
             game.user = request.user
             game.save()
             messages.success(request, 'Jogo cadastrado com sucesso')
+            return redirect('accounts:index')
         else:
             messages.error(request, 'Dados invalidos')
     return render(request, 'game/add.html', {'form': form})

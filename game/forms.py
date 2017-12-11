@@ -3,6 +3,7 @@
 from django import forms
 from game.models import Game
 from zipfile import ZipFile
+
 class GameForm(forms.ModelForm):
     class Meta:
         model = Game
@@ -14,5 +15,4 @@ class GameForm(forms.ModelForm):
             raise forms.ValidationError("Tamanho da foto excedido")
         if file.name.split('.')[1] != 'zip':
             raise forms.ValidationError("Use formato ZIP para enviar o jogo")
-        ZipFile.printdir(file)
         return file

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'game',
     # libs
     'widget_tweaks',
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [

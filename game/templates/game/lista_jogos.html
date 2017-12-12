@@ -13,6 +13,7 @@
         Autores: {{ i.autores }}<br>
         Versão: {{ i.versao }}<br>
         Descrição: {{  i.descricao }}<br>
+        <a href="{{ i.arquivo.url }}"><button>Download</button></a><br>
         <br><br>
     {%  endfor %}
 {% endblock %}

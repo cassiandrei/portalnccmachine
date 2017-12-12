@@ -7,7 +7,7 @@ class Game(models.Model):
     nome = models.CharField(max_length=30, help_text='Nome do Jogo', unique=True)
     autores = models.TextField(max_length=500, help_text='Digite seus autores')
     versao = models.CharField(max_length=30, help_text='Versão do jogo')
-    descricao = models.TextField(max_length=500)
+    descricao = models.TextField(max_length=500, help_text="Informe a descrição do jogo")
 
     def arquivoname(self, filename):
         return str(self.nome) + '.' + filename.split('.')[-1]

@@ -1,25 +1,30 @@
 {% extends "accounts/index.html" %}
-
-{% load widget_tweaks %}
-
 {% block title %}Minha Conta{% endblock %}
 
 {% block accounts_container %}
     <h2>Minha Conta</h2>
-
-{#    Info:<br><br>#}
     Nome: {{ user }}<br>
     Email: {{ user.email }}<br>
     Data da entrada: {{ user.date_joined }}<br>
-    <h2>Meus Jogos:</h2>
-    {% for i in games %}
-    <b>{{ i.nome }}</b><br>
-        Autores: {{ i.autores }}<br>
-        Versão: {{ i.versao }}<br>
-        Descrição: {{  i.descricao }}<br>
-        <a href="{{ i.arquivo.url }}"><button>Download</button></a>
-        <a href="{% url 'game:remove' i.id %}"><button>Remover</button></a>
-        <br><br>
-    {% endfor %}
-
+    {% if games %}
+        <h2>Meus Jogos:</h2>
+        {% for i in games %}
+            <b>{{ i.nome }}</b><br>
+            Autores: {{ i.autores }}<br>
+            Versão: {{ i.versao }}<br>
+            Descrição: {{ i.descricao }}<br>
+            <a href="{{ i.arquivo.url }}">
+                <button>Download</button>
+            </a>
+            <a href="{% url 'game:remove' i.id %}">
+                <button>Remover</button>
+            </a>
+        {% endfor %}
+    {% else %}
+        <h2>Nenhum jogo adicionado</h2>
+        <a href="{% url 'game:add' %}">
+            <button>Adicionar jogo</button>
+        </a>
+        <br>
+    {% endif %}
 {% endblock %}

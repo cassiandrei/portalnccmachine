@@ -7,7 +7,7 @@
 {% block accounts_container %}
     <h2>Minha Conta</h2>
 
-    Info:<br><br>
+{#    Info:<br><br>#}
     Nome: {{ user }}<br>
     Email: {{ user.email }}<br>
     Data da entrada: {{ user.date_joined }}<br>
@@ -17,7 +17,8 @@
         Autores: {{ i.autores }}<br>
         Versão: {{ i.versao }}<br>
         Descrição: {{  i.descricao }}<br>
-        <a href="{% url 'game:remove' i.id %}"><button>Remover</button></a>
+        <a href="{% url 'game:remove' i.id %}"><button>Download</button></a>
+        <a href="{{ i.arquivo.url }}"><button>Remover</button></a>
         <br><br>
     {% endfor %}
 

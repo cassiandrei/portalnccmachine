@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render
 from game.forms import *
@@ -6,11 +7,12 @@ import json
 
 from django.shortcuts import redirect
 from .models import Game
+
+
 # Create your views here.
 
-def index(request):
-    return render(request, 'game/index.html')
 
+@login_required
 def gameregister(request):
     form = GameForm()
     if request.method == 'POST':
@@ -25,17 +27,21 @@ def gameregister(request):
             messages.error(request, 'Dados invalidos')
     return render(request, 'game/add.html', {'form': form})
 
+
 def lista_jogos(request):
     games = Game.objects.all()
     context = {'games': games}
     return render(request, 'game/lista_jogos.html', context)
 
+
+@login_required
 def remove(request, id):
     Game.objects.get(id=id).delete()
     messages.success(request, 'Jogo Removido')
     return redirect('accounts:index')
 
-#retorna um json com todos os jogos
+
+# retorna um json com todos os jogos
 def getAllGames(request):
     games = Game.objects.all()
     dic = {}

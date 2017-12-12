@@ -1,9 +1,23 @@
 {% extends "base.html" %}
 
 {% block container %}
-<div class="jumbotron page-header">
-  <h1>Django Project</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-  <p><a class="btn btn-primary">Saiba mais</a></p>
-</div>
+    <div class="jumbotron page-header">
+        <h1>Bem-vindo à NCCMachine</h1>
+        <p>Uma máquina para você expor seus jogos produzidos durante sua graduação!</p>
+        {% if user.is_authenticated %}
+            <p><a class="btn btn-primary" href="{% url 'game:add' %}">Adicionar Jogo</a></p>
+        {% else %}
+            <p><a class="btn btn-primary" href="{% url 'accounts:register' %}">Cadastrar-se</a></p>
+        {% endif %}
+    </div>
+    <div class="jumbotron page-header">
+        <h1>Tutorial</h1>
+        <p>Confira nosso tutorial aqui!</p>
+        <p><a class="btn btn-primary" href="{% url 'tutorial' %}">Saiba mais</a></p>
+    </div>
+    <div class="jumbotron page-header">
+        <h1>Sobre o NCCMachine</h1>
+        <p>Tudo começou com uma máquina caça-níquel abandonada no NCC...</p>
+        <p><a class="btn btn-primary" href="{% url 'sobre' %}">Saiba mais</a></p>
+    </div>
 {% endblock %}

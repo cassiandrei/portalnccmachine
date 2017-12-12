@@ -1,5 +1,5 @@
 # coding=utf-8
-
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views.generic import (
     CreateView, TemplateView, UpdateView, FormView
@@ -13,6 +13,7 @@ from django.contrib import messages
 from .models import User
 from game.models import Game
 from .forms import UserAdminCreationForm
+
 
 def register(request):
     form = UserAdminCreationForm()
@@ -62,6 +63,7 @@ update_user = UpdateUserView.as_view()
 update_password = UpdatePasswordView.as_view()
 
 
+@login_required
 def index(request):
     user = User.objects.get(username=request.user)
     games = Game.objects.filter(user=user)

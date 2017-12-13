@@ -2,7 +2,7 @@
 
 from django import forms
 from game.models import Game
-from zipfile import ZipFile
+import zipfile
 
 class GameForm(forms.ModelForm):
     class Meta:
@@ -15,4 +15,7 @@ class GameForm(forms.ModelForm):
             raise forms.ValidationError("Tamanho da foto excedido")
         if file.name.split('.')[1] != 'zip':
             raise forms.ValidationError("Use formato ZIP para enviar o jogo")
+        with zipfile.ZipFile(file, 'r') as game_zip:
+            if('run.sh' not in game_zip.namelist()):
+                raise forms.ValidationError("O arquivo ZIP deve conter um arquivo run.sh")
         return file

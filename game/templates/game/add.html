@@ -1,5 +1,6 @@
 {% extends "accounts/index.html" %}
 {% block title %}Enviar Game{% endblock %}
+{% load widget_tweaks %}
 {% block accounts_container %}
     <form action="{% url 'game:add' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
         <fieldset>

@@ -10,7 +10,7 @@ from django.contrib.auth.models import AbstractBaseUser, UserManager, Permission
 class User(AbstractBaseUser, PermissionsMixin):
 
     username = models.CharField(
-        'Apelido / Usuário', max_length=30, unique=True, validators=[
+        'Email / Usuário', max_length=30, unique=True, validators=[
             validators.RegexValidator(
                 re.compile('^[\w.@+-]+$'),
                 'Informe um nome de usuário válido. '
@@ -43,3 +43,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return str(self).split(" ")[0]
+
+
+class Token(models.Model):
+    username = models.CharField(max_length=30, unique=True)
+    token = models.IntegerField(default=0)

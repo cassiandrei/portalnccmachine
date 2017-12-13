@@ -151,3 +151,11 @@ MESSAGE_TAGS = {
     messages_constants.WARNING: 'warning',
     messages_constants.ERROR: 'danger',
 }
+
+# EMAIL
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'trabintrobd@gmail.com'
+EMAIL_HOST_PASSWORD = 'trabalhobd'
+EMAIL_USE_SSL = True
+EMAIL_PORT = 465

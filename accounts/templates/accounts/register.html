@@ -4,38 +4,23 @@
 {% block title %}Registro | {{ block.super }}{% endblock %}
 
 {% block container %}
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="page-header">
-            <h1>Registro</h1>
-        </div>
-        <form class="form-horizontal" method="post">
-            {% csrf_token %}
-            {% for error in form.non_field_errors %}
-            <div class="alert alert-danger">
-                {{ error }}
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="page-header">
+                <h1>Registro</h1>
             </div>
-            {% endfor %}
-            <fieldset>
-                {% for field in form %}
-                <div class="form-group{% if field.errors %} has-error{% endif %}">
-                  <label for="{{ field.auto_id }}" class="col-md-3 control-label">{{ field.label }}</label>
-                  <div class="col-md-9">
-{#                    {% render_field field class="form-control" %}#}
-                    {{ field }}
-                    {% for error in field.errors %}
-                    <span class="help-block">{{ error }}</span>
-                    {% endfor %}
-                  </div>
-                </div>
-                {% endfor %}
-                <div class="form-group">
-                  <div class="col-md-9 col-md-offset-3">
-                    <button type="submit" class="btn btn-primary">Registrar</button>
-                  </div>
-                </div>
-            </fieldset>
-        </form>
+            <form class="form-horizontal" method="post">
+                {% csrf_token %}
+                <fieldset>
+                    Digite seu E-mail inf.ufsm.br
+                    <div class="form-group">
+                        <div>
+                            <input type="email" name="email" placeholder="E-mail" class="form-control" required>
+                        </div>
+                    </div>
+                    <input class="btn btn-default submit" type="submit" value="Registrar"/>
+                </fieldset>
+            </form>
+        </div>
     </div>
-</div>
 {% endblock %}

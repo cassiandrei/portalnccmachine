@@ -7,6 +7,7 @@ __pycache__/
 .idea/*
 [0-9]*.py
 db.sqlite3
+media/*
 
 # C extensions
 *.so
